@@ -1,0 +1,28 @@
+{
+  "name": "i18n-tools-cli",
+  "version": "1.0.1",
+  "description": "CLI for transforming translation files from INI format to JSON format and vice versa plus translating INI files using Google Translate",
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "translations",
+    "languages",
+    "locales",
+    "cli"
+  ],
+  "repository": {
+    "url": "https://github.com/Ricki-BumbleDev/i18n-tools-cli"
+  },
+  "license": "MIT",
+  "author": "bumbledev",
+  "main": "index.js",
+  "type": "module",
+  "preferGlobal": true,
+  "bin": {
+    "i18n": "index.js"
+  },
+  "dependencies": {
+    "@k3rn31p4nic/google-translate-api": "^1.1.0",
+    "yargs": "^15.1.0"
+  }
+}
