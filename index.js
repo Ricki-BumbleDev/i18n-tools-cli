@@ -1,8 +1,9 @@
 #!/usr/bin/env node
-import fs from 'fs';
 import googleTranslate from '@k3rn31p4nic/google-translate-api';
-import yargs from 'yargs';
+import fs from 'fs';
 import path from 'path';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
 
 const splitAtFirstEqualSign = string => {
   const firstEqualSignPosition = string.indexOf('=');
@@ -82,7 +83,7 @@ const extractTranslations = async ({ baseLanguage, baseDir, inputFile, outputFil
   fs.writeFileSync(outputFile || path.join(baseDir, baseLanguage + '.txt'), Object.values(translations).join('\n'));
 };
 
-yargs
+yargs(hideBin(process.argv))
   .command('to-json <base-language>', 'Convert i18n file to JSON file', {}, toJson)
   .command('from-json <base-language>', 'Convert JSON file to i18n file', {}, fromJson)
   .command('translate <base-language> <target-language>', 'Translate i18n file', {}, translate)
@@ -95,4 +96,5 @@ yargs
   )
   .option('base-dir', { alias: 'b', type: 'path', default: '.' })
   .option('input-file', { alias: 'i', type: 'path' })
-  .option('output-file', { alias: 'o', type: 'path' }).argv;
+  .option('output-file', { alias: 'o', type: 'path' })
+  .parse();

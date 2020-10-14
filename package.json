@@ -1,6 +1,6 @@
 {
   "name": "i18n-tools-cli",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "CLI for transforming translation files from INI format to JSON format and vice versa plus translating INI files using Google Translate",
   "keywords": [
     "i18n",
@@ -22,7 +22,7 @@
     "i18n": "index.js"
   },
   "dependencies": {
-    "@k3rn31p4nic/google-translate-api": "^1.1.0",
-    "yargs": "^15.1.0"
+    "@k3rn31p4nic/google-translate-api": "^1.1.1",
+    "yargs": "^16.0.3"
   }
 }
