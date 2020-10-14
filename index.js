@@ -4,6 +4,11 @@ import googleTranslate from '@k3rn31p4nic/google-translate-api';
 import yargs from 'yargs';
 import path from 'path';
 
+const splitAtFirstEqualSign = string => {
+  const firstEqualSignPosition = string.indexOf('=');
+  return [string.substring(0, firstEqualSignPosition), string.substring(firstEqualSignPosition + 1)];
+};
+
 const getFilePath = (baseLanguage, baseDir, overwriteFilePath, type = 'ini') => {
   if (overwriteFilePath) {
     return overwriteFilePath;
@@ -26,7 +31,7 @@ const loadIniFile = filePath =>
       .readFileSync(filePath, 'utf8')
       .split(/\r?\n/)
       .filter(translation => translation.includes('='))
-      .map(translation => translation.split('=', 2))
+      .map(splitAtFirstEqualSign)
   );
 
 const writeIniFile = (translations, filePath) =>
